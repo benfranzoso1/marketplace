@@ -3,7 +3,6 @@ import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { Form } from "@remix-run/react";
 import type { Vin } from "~/models/post.server";
-import type { LoaderFunction } from "@remix-run/node";
 import { getVin } from "~/models/post.server";
 
 // https://remix.run/api/conventions#meta
@@ -14,6 +13,8 @@ export let meta: MetaFunction = () => {
 	};
 };
 
+// Load data from post model
+// watched this tutorial: https://www.youtube.com/watch?v=HOlYQu_r4Io
 export const loader: LoaderFunction = async ({ request }) => {
 	const url = new URL(request.url);
 	const vin = url.searchParams.get("vin");
